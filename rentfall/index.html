@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rentfall</title>
+<meta name="description" content="A fast property-trading card game. Collect three sets, charge rent, and win.">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: #0C1A14; color: #F3F8F5;
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .strip { display: flex; height: 6px; }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 20px 72px; }
+  h1 { font-size: 30px; letter-spacing: 1px; margin: 28px 0 4px; }
+  h2 { font-size: 20px; color: #E8B93B; margin: 32px 0 8px; }
+  h3 { font-size: 16px; margin: 24px 0 6px; }
+  p, li { color: #9DBCAD; }
+  strong { color: #F3F8F5; }
+  a { color: #E8B93B; }
+  code { background: #162C23; padding: 2px 6px; border-radius: 4px; font-size: 14px; }
+  .card { background: #162C23; border: 1px solid #2A5343; border-radius: 14px; padding: 20px; margin: 20px 0; }
+  .lede { font-size: 18px; color: #F3F8F5; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; display: block; overflow-x: auto; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid #2A5343; font-size: 14px; color: #9DBCAD; }
+  th { color: #F3F8F5; }
+  blockquote { border-left: 3px solid #E8B93B; margin: 16px 0; padding: 4px 0 4px 16px; }
+  footer { border-top: 1px solid #2A5343; margin-top: 48px; padding-top: 20px; font-size: 13px; color: #6C8B7C; }
+  .steps { counter-reset: step; list-style: none; padding: 0; }
+  .steps li { counter-increment: step; margin: 12px 0; padding-left: 40px; position: relative; }
+  .steps li::before {
+    content: counter(step); position: absolute; left: 0; top: 0;
+    width: 26px; height: 26px; border-radius: 13px; background: #E8B93B; color: #1A1404;
+    font-weight: 800; text-align: center; line-height: 26px;
+  }
+</style>
+</head>
+<body>
+<div class="strip"><span style="flex:1;background:#8A5A3B"></span><span style="flex:1;background:#67C2E6"></span><span style="flex:1;background:#E464A8"></span><span style="flex:1;background:#EE8B33"></span><span style="flex:1;background:#DC3F45"></span><span style="flex:1;background:#E8C133"></span><span style="flex:1;background:#3EA76A"></span><span style="flex:1;background:#2F5DAE"></span><span style="flex:1;background:#4B5563"></span><span style="flex:1;background:#8B7BD8"></span></div>
+<main>
+
+<h1>RENTFALL</h1>
+<p class="lede">Collect three complete sets. Charge rent. Win.</p>
+
+<div class="card">
+  <p>A fast property-trading card game. Play offline against the computer with no account
+     of any kind, or online - with random players, or with friends in a private room.</p>
+  <ul>
+    <li>Three levels of computer opponent</li>
+    <li>Play online with random players, or with friends in a private room</li>
+    <li>Add friends with a friend code and invite them to your table</li>
+    <li>Four game lengths, from a five-minute Quick game to a Marathon</li>
+    <li><strong>No ads. No in-app purchases. No tracking.</strong></li>
+  </ul>
+</div>
+
+<h2>How it plays</h2>
+<p>Ten districts, from the Old Quarter up to Harbour Heights. Collect every card in a
+   district and you have a set; three sets wins.</p>
+<p>Each turn you draw two cards and play up to three. Any card that is not a property can
+   be banked as money instead of played for its effect &mdash; and deciding which is most
+   of the game.</p>
+<p>Rent cards charge for a district you own. An Invoice takes 5M from one player, a Levy
+   takes 2M from everybody. A Snatch takes a loose property; a Takeover takes a whole
+   complete set &mdash; unless they play a <strong>Veto</strong>. Which you can veto back.</p>
+
+<h2>Privacy</h2>
+<p>Very little is collected. Offline play sends nothing at all, and the app does not
+   even open a connection unless you go online. Signing in with Google keeps a small
+   account record - your name, a friend code and your friends list - and nothing else.
+   See the <a href="privacy/">privacy policy</a>.</p>
+
+<footer>
+  <p>Rentfall &middot; <a href="index.html">Home</a> &middot;
+     <a href="privacy/">Privacy</a> &middot;
+     <a href="delete-account/">Delete your account</a></p>
+  <p>An original property-trading card game. Not affiliated with, endorsed by, or connected to
+     any other game publisher.</p>
+  <p>Contact: <a href="mailto:akashkalala123@gmail.com">akashkalala123@gmail.com</a></p>
+</footer>
+</main>
+</body>
+</html>
