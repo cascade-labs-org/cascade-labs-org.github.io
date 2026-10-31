@@ -3,33 +3,31 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; base-uri 'self'; form-action 'none'">
-<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Page not found &ndash; Cascade Labs</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Unbounded:wght@500;600;700&display=swap">
-<link rel="stylesheet" href="/assets/css/site.css">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'">
+<style>
+  :root { color-scheme: light dark; --bg: #ffffff; --text: #17141f; --muted: #5c5770; --accent: #4a16f2; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0f0d16; --text: #f2f0f8; --muted: #aaa4bf; --accent: #a68cff; }
+  }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  .bar { height: 6px; background: var(--accent); }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 20px 72px; }
+  h1 { font-size: 28px; line-height: 1.25; margin: 0 0 6px; }
+  p { color: var(--muted); }
+  a { color: var(--accent); }
+</style>
 </head>
 <body>
-<header class="site-head">
-  <div class="wrap">
-    <a class="logo" href="/" aria-label="Cascade Labs home"><img src="/assets/img/cascade-labs-logo.png" alt="Cascade Labs" width="344" height="160"></a>
-    <nav aria-label="Main">
-      <ul class="nav">
-        <li><a href="/games/">Games</a></li>
-        <li><a href="/#studio">Studio</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-<main class="wrap lost">
-  <h1>There is no page here.</h1>
-  <p>The address may be mistyped, or the page has moved. Start again from the <a href="/">home page</a> or see <a href="/games/">all games</a>.</p>
+<div class="bar"></div>
+<main>
+  <h1>Page not found</h1>
+  <p>There is nothing at this address.</p>
+  <p><a href="/">Support, privacy policies and account deletion for every Cascade Labs game</a></p>
 </main>
 </body>
 </html>

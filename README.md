@@ -1,87 +1,71 @@
-# Cascade Labs website
+# Cascade Labs game support pages
 
-Live at **<https://cascade-labs-org.github.io/>**, published by GitHub Pages from this
-repository (`cascade-labs-org/cascade-labs-org.github.io`).
+Served at **<https://cascade-labs-org.github.io/>** by GitHub Pages from this repository.
 
-The studio site: a home page, a games list, a page for each game (Tenspire so far), and
-the privacy policy and account-deletion pages the app stores require for every game. It is
-plain HTML and CSS in `public/` with one small script, no framework and **no build step**.
+The pages the app stores need for every Cascade Labs game: a support page, the privacy
+policy and how to delete an account, plus a short page listing them all. The studio website
+is not here: it lives in
+[`cascade-labs-website`](https://github.com/cascade-labs-org/cascade-labs-website).
+
+**The apps and the Play listings link to these addresses, so they must never move.**
+`SITE_BASE` in each game's `app/src/links.ts` is
+`https://cascade-labs-org.github.io/games/<game>`; the apps open `<SITE_BASE>/privacy`, and
+the Play listings name the privacy and account-deletion pages.
 
 ```
-public/                          everything that gets published
-  index.html                     home: the fan, our games, how we make games, contact
-  games/index.html               every game
-  games/tenspire/index.html      Tenspire
-  games/tenspire/privacy/        Tenspire's privacy policy          (copied - see below)
-  games/tenspire/delete-account/ how to delete a Tenspire account   (copied)
-  games/rentfall/                Rentfall's support landing, privacy policy and
-                                 account deletion                   (copied)
-  tenspire/, rentfall/           short addresses that forward to games/<game>/...
+public/
+  index.html                     every game's pages, and the contact address
+  games/<game>/                  the game's support page              (copied - see below)
+  games/<game>/privacy/          its privacy policy                   (copied)
+  games/<game>/delete-account/   how to delete an account             (copied)
+  tenspire/, rentfall/           short addresses that forward to games/<game>/... (written
+                                 by the copy script)
   404.html                       shown for any address that does not exist
-  assets/css/site.css            the one stylesheet (colour and type tokens at the top)
-  assets/js/site.js              the fan's riffle on hover/tap; the site works without it
-  assets/img/                    logos, icons and game art (generated)
-brand/                           the logo exactly as supplied
-tools/build-assets.py            makes everything generated, from brand/ and the game repos
-tools/ribbons.py                 the logo's ribbons traced as vectors
+  favicon.ico                    the Cascade Labs mark, from the website's build
+tools/copy-game-pages.py         copies the games' pages in and writes the short addresses
 .github/workflows/pages.yml      publishes public/ on every push to main
 ```
 
-## Preview it
+Every page here carries its own styles: nothing loads from anywhere else.
 
-From the `Games` folder, start the **cascade-site** preview (it runs
-`python -m http.server 8090 --directory cascade-labs/public`) and open
-<http://localhost:8090>. The local server does not show `404.html`; GitHub Pages does.
+## Update a game's pages
 
-## Rebuild the generated files
+Each game generates its pages in its own repository, from its `docs/PRIVACY-POLICY.md`
+(`npm run site` there writes its `site/` folder). Never edit the copies here: change the
+game, then copy again.
 
 ```bash
-python -I tools/build-assets.py
+python -I tools/copy-game-pages.py            # every game
+python -I tools/copy-game-pages.py tenspire   # one game
 ```
 
-It reads `brand/`, and the two game repositories in `../games/` (`../games/tenspire` and
-`../games/rentfall`), and rewrites:
+It reads `../games/<game>/site/`, so the games must sit next to this repository in
+`../games/`. Commit what it writes and push; the pages republish in a minute or two.
 
-- the logo and mark with the white background removed, plus a version of the logo for dark
-  backgrounds (CASCADE in white),
-- the mark redrawn as vector ribbons (`cascade-mark.svg`, `favicon.svg`) and inlined into
-  `public/index.html` between the `<!-- fan:start -->` markers, where it fans open,
-- favicons and the share images,
-- Tenspire's icon and six screenshots as WebP, and Rentfall's icon,
-- **each game's privacy and account-deletion pages**, copied from the game's `site/`
-  folder. Those are generated in the game's repository from its `docs/PRIVACY-POLICY.md`
-  (`npm run site` there) - never edit the copies here.
+## Add a game
 
-Commit what it writes and push; the site republishes in a minute or two.
+Add its folder name to `GAMES` in `tools/copy-game-pages.py`, run it, and add the game to
+`public/index.html`.
 
-**The games link to these pages**: `SITE_BASE` in each game's `app/src/links.ts` is
-`https://cascade-labs-org.github.io/games/<game>`, and the Play listings point at the same
-addresses. Moving or renaming them breaks the privacy link in every installed copy.
+## Email addresses
 
-## Add a game page
+`cascadelabs.in@gmail.com` is the contact on every page here. The closed-test note on
+`public/index.html` sends sign-ups to `cascadelabs.review@gmail.com`.
 
-Copy `public/games/tenspire/index.html` to `public/games/<game>/`, change the words and
-pictures, add the game's art and pages to `build-assets.py`, and link it from
-`public/games/index.html` and the home page.
+The games started with the placeholder `hello@cascadelabs.example`. On 31 October 2026 the
+copies here were switched to the real address by hand, before the games themselves were. Each
+game still has to set `SUPPORT_EMAIL` in `app/src/links.ts`, fix its
+`docs/PRIVACY-POLICY.md` and run `npm run site`. Until it does, the copy script refuses to
+copy it, so the live pages cannot go back to the placeholder.
 
-## Before you share it widely
+## Preview it
 
-- **Email addresses.** `cascadelabs.in@gmail.com` is the studio's contact address: the home
-  page and every game's privacy, account-deletion and support pages. The "Become a tester"
-  links send closed-test sign-ups to `cascadelabs.review@gmail.com`. The game pages here
-  were changed by hand, so each game's `SUPPORT_EMAIL` in `app/src/links.ts`, its
-  `docs/PRIVACY-POLICY.md` and `npm run site` must catch up there, or the next
-  `build-assets.py` run copies the old placeholder `hello@cascadelabs.example` back.
-- **The site's address** is written in full in each page's `<head>` (`canonical`, `og:url`,
-  `og:image` - link previews need a full address), in `public/sitemap.xml` and in
-  `public/robots.txt`. If the site moves to its own domain, search `public/` for
-  `cascade-labs-org.github.io` and change them all, along with `SITE_BASE` in the games.
+From the folder that holds this repository, run
+`python -m http.server 8091 --directory cascade-labs-org.github.io/public` and open
+<http://localhost:8091>. The local server does not show `404.html`; GitHub Pages does.
 
 ## Hosting
 
 GitHub Pages, free, from this public repository - **Settings → Pages → Source: GitHub
-Actions**. GitHub Pages cannot send custom response headers, so each studio page carries
-its Content-Security-Policy in a `<meta>` tag instead.
-
-A domain of your own can be added for free under Settings → Pages → Custom domain; you pay
-only the registrar.
+Actions**. It serves the organisation's root address only from the repository named
+`cascade-labs-org.github.io`, which is why the games' pages live here.
