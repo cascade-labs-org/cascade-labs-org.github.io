@@ -39,8 +39,8 @@ From the `Games` folder, start the **cascade-site** preview (it runs
 python -I tools/build-assets.py
 ```
 
-It reads `brand/`, and the two game repositories next to this one (`../tenfold` for
-Tenspire, `../rentfall`), and rewrites:
+It reads `brand/`, and the two game repositories in `../games/` (`../games/tenspire` and
+`../games/rentfall`), and rewrites:
 
 - the logo and mark with the white background removed, plus a version of the logo for dark
   backgrounds (CASCADE in white),

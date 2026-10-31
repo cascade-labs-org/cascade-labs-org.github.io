@@ -3,7 +3,7 @@
     python -I tools/build-assets.py
 
 Run from anywhere. It reads the logo sources in brand/ and the store art in the two game
-repositories next to this one (../tenfold and ../rentfall), and writes into public/:
+repositories in ../games/ (../games/tenspire and ../games/rentfall), and writes into public/:
 
 - the Cascade Labs logo and mark with the white background taken out (PNG, cropped)
 - the mark redrawn as vector ribbons (assets/img/cascade-mark.svg, favicon.svg), and the same
@@ -31,10 +31,10 @@ sys.path.insert(0, HERE)
 import ribbons  # noqa: E402
 
 ROOT = os.path.dirname(HERE)
-GAMES = os.path.dirname(ROOT)
+GAMES = os.path.join(os.path.dirname(ROOT), "games")
 PUB = os.path.join(ROOT, "public")
 IMG = os.path.join(PUB, "assets", "img")
-TENSPIRE = os.path.join(GAMES, "tenfold")      # Tenspire's repository keeps its old folder name
+TENSPIRE = os.path.join(GAMES, "tenspire")
 RENTFALL = os.path.join(GAMES, "rentfall")
 
 PIVOT_COLOUR = "#3a10e0"
