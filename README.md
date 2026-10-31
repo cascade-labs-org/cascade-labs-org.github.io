@@ -66,11 +66,12 @@ pictures, add the game's art and pages to `build-assets.py`, and link it from
 
 ## Before you share it widely
 
-- **Contact address.** Every email link on the site, and the contact on every game's
-  privacy and deletion pages, is the placeholder `hello@cascadelabs.example`, which cannot
-  receive mail. When the studio has an address: search `public/*.html` and
-  `public/games/*/index.html` for `cascadelabs.example`, set `SUPPORT_EMAIL` in each game's
-  `app/src/links.ts`, run `npm run site` in each game, then rebuild here.
+- **Email addresses.** `cascadelabs.in@gmail.com` is the studio's contact address: the home
+  page and every game's privacy, account-deletion and support pages. The "Become a tester"
+  links send closed-test sign-ups to `cascadelabs.review@gmail.com`. The game pages here
+  were changed by hand, so each game's `SUPPORT_EMAIL` in `app/src/links.ts`, its
+  `docs/PRIVACY-POLICY.md` and `npm run site` must catch up there, or the next
+  `build-assets.py` run copies the old placeholder `hello@cascadelabs.example` back.
 - **The site's address** is written in full in each page's `<head>` (`canonical`, `og:url`,
   `og:image` - link previews need a full address), in `public/sitemap.xml` and in
   `public/robots.txt`. If the site moves to its own domain, search `public/` for
